@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/model/todo.dart';
+import 'package:todo_app/utils/dialogbox.dart';
 import 'package:todo_app/utils/todo_widget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -29,6 +30,13 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  void createNewTask() {
+    showDialog(
+      context: context,
+      builder: (context) => DialogBox(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.yellow,
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: createNewTask,
       ),
       body: ListView.builder(
         itemCount: toDoList.length,
